@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dandy Hats</title>
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: black;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+/* CONTENEDOR */
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🧢 IMAGEN (MISMO TAMAÑO QUE TENÍAS) */
+.gorras {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 40px;
+}
+
+/* 🎥 GIF */
+.gif {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 60px;
+}
+
+/* 🔥 CARD (AHORA SÍ ABAJO) */
+.card {
+  width: 90%;
+  max-width: 320px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+
+  margin-top: auto; /* 🔥 ESTO LA BAJA */
+  margin-bottom: 40px; /* separación abajo */
+  align-self: center;
+}
+
+/* LOGO */
+.logo {
+  width: 100px;
+  margin: 15px auto;
+  display: block;
+}
+
+/* TEXTO */
+.title {
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+/* CONTADOR */
+.counter {
+  font-size: 22px;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <img class="gif" src="https://usadandyhat.com/static/picture/dandyhats.gif">
+
+  <img class="gorras" src="https://i.imgur.com/WMzd6w0.jpeg">
+
+  <div class="card">
+    <div class="title">Authentic Dandy Product</div>
+
+    <img class="logo" src="https://i.ibb.co/qLkxhqRy/680v-QDZ-removebg-preview.png">
+
+    <div class="counter">
+      Count: <span id="count">0</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id") || "default";
+
+const key = "contador_" + id;
+const visitKey = "visitado_" + id;
+
+if (!localStorage.getItem(visitKey)) {
+  let count = localStorage.getItem(key) || 0;
+  count++;
+  localStorage.setItem(key, count);
+  localStorage.setItem(visitKey, "true");
+}
+
+document.getElementById("count").innerText = localStorage.getItem(key) || 1;
+</script>
+
+</body>
+</html>
+```
